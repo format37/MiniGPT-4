@@ -7,3 +7,6 @@ webdataset
 transformers
 decord
 sentencepiece
+fschat
+accelerate
+bitsandbytes
