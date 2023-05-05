@@ -5,6 +5,11 @@
 
 <a href='https://minigpt-4.github.io'><img src='https://img.shields.io/badge/Project-Page-Green'></a>  <a href='MiniGPT_4.pdf'><img src='https://img.shields.io/badge/Paper-PDF-red'></a> 
 
+## Docker installation
+```
+sh build.sh
+sh run.sh
+```
 
 ## Online Demo
 
