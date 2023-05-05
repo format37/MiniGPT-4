@@ -5,12 +5,6 @@
 
 <a href='https://minigpt-4.github.io'><img src='https://img.shields.io/badge/Project-Page-Green'></a>  <a href='MiniGPT_4.pdf'><img src='https://img.shields.io/badge/Paper-PDF-red'></a> 
 
-## Docker installation
-```
-sh build.sh
-sh run.sh
-```
-
 ## Online Demo
 
 Click the image to chat with MiniGPT-4 around your images
@@ -80,7 +74,11 @@ To play with our pretrained model, download the pretrained checkpoint
 Then, set the path to the pretrained checkpoint in the evaluation config file 
 in [eval_configs/minigpt4_eval.yaml](eval_configs/minigpt4_eval.yaml#L10) at Line 10. 
 
-
+## Launching demo in docker
+```
+sh build.sh
+sh run.sh
+```
 
 ### Launching Demo Locally
 

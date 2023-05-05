@@ -88,8 +88,12 @@ def gradio_ask(user_message, chatbot, chat_state):
     return '', chatbot, chat_state
 
 
-def gradio_answer(chatbot, chat_state, img_list, num_beams, temperature):
-    llm_message = chat.answer(conv=chat_state, img_list=img_list, max_new_tokens=1000, num_beams=num_beams, temperature=temperature)[0]
+def gradio_answer(chatbot, chat_state, img_list, num_beams, temperature, max_new_tokens=1000):
+    llm_message = chat.answer(conv=chat_state, img_list=img_list, max_new_tokens=max_new_tokens, num_beams=num_beams, temperature=temperature)[0]
+    # Clear the llm_message formatting
+    # llm_message = llm_message.replace('<|startoftext|>', '')
+    llm_message = llm_message.replace('<s>', '')
+    print('llm_message', llm_message)
     chatbot[-1][1] = llm_message
     return chatbot, chat_state, img_list
 
@@ -129,6 +133,15 @@ with gr.Blocks() as demo:
                 label="Temperature",
             )
 
+            max_new_tokens = gr.Slider(
+                minimum=10,
+                maximum=4000,
+                value=1000,
+                step=10,
+                interactive=True,
+                label="Max New Tokens",
+            )
+
         with gr.Column():
             chat_state = gr.State()
             img_list = gr.State()
@@ -138,7 +151,7 @@ with gr.Blocks() as demo:
     upload_button.click(upload_img, [image, text_input, chat_state], [image, text_input, upload_button, chat_state, img_list])
     
     text_input.submit(gradio_ask, [text_input, chatbot, chat_state], [text_input, chatbot, chat_state]).then(
-        gradio_answer, [chatbot, chat_state, img_list, num_beams, temperature], [chatbot, chat_state, img_list]
+        gradio_answer, [chatbot, chat_state, img_list, num_beams, temperature, max_new_tokens], [chatbot, chat_state, img_list]
     )
     clear.click(gradio_reset, [chat_state, img_list], [chatbot, image, text_input, upload_button, chat_state, img_list], queue=False)
 
