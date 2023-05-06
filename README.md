@@ -74,12 +74,17 @@ To play with our pretrained model, download the pretrained checkpoint
 Then, set the path to the pretrained checkpoint in the evaluation config file 
 in [eval_configs/minigpt4_eval.yaml](eval_configs/minigpt4_eval.yaml#L10) at Line 10. 
 
-## Launching demo in docker
+### Launching demo in docker
 ```
 sh build.sh
 sh run.sh
 ```
-
+### Client call sample
+```
+cd client
+python3 -m pip install -r requirements.txt
+python3 call.py
+```
 ### Launching Demo Locally
 
 Try out our demo [demo.py](demo.py) on your local machine by running
