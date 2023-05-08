@@ -78,6 +78,7 @@ in [eval_configs/minigpt4_eval.yaml](eval_configs/minigpt4_eval.yaml#L10) at Lin
 ```
 sh build.sh
 sh run.sh
+sh logs.sh
 ```
 ### Client call sample
 ```
